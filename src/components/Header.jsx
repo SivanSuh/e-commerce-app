@@ -19,25 +19,20 @@ const Header = () => {
     FetchApi();
   }, []);
 
-  const DetailClick = () => {
-    <Popup />;
-  };
   return (
     <div>
       <div className="flex justifty-around mx-auto w-10/12 flex-wrap mt-4">
         {fetchData.map((datas) => {
           return (
             <div
-              className="flex flex-col border-2 mx-auto w-80 m-2  justify-between"
+              className="flex flex-col relative border-2 mx-auto w-80 h-auto m-2  justify-between"
               key={datas.id}
             >
-              <div className="h-45 my-2">
-                <img
-                  className="object-cover h-45 border-b  mb-1 "
-                  src={datas.image}
-                  alt="foto"
-                />
-              </div>
+              <img
+                className="object-contain h-80   mb-1 "
+                src={datas.image}
+                alt="foto"
+              />
               <h2 className="my-2">
                 <strong>Name : </strong>
                 {datas.title}
@@ -46,15 +41,18 @@ const Header = () => {
                 <strong>Price : </strong>
                 {datas.price + " TL"}
               </h2>
-              <div className="flex absolute bottom-0">
+              <div className="flex justify-center items-center  absolute bottom-0 right-0 left-0">
                 <button
-                  className="p-2 bg-cyan-500 w-2/4 hover:text-yellow-500 hover:bg-black"
+                  className="font-bold p-2 bg-yellow-400 w-2/4  hover:text-white"
                   onClick={() => dispatch(addBasket())}
                 >
                   add
                 </button>
-                <Link to={"detail"} className="w-2/4 bg-slate-500 text-white">
-                  <button onClick={DetailClick}>Detail</button>
+                <Link
+                  to={`detail/${datas.id}`}
+                  className="font-bold p-2 w-2/4 bg-black text-white text-center hover:text-yellow-500"
+                >
+                  <button>Detail</button>
                 </Link>
               </div>
             </div>

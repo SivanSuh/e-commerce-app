@@ -5,12 +5,12 @@ const Navbar = () => {
   const count = useSelector((state) => state.basket.value);
 
   return (
-    <nav className="flex justify-around items-center bg-sky-400 text-white  p-5">
+    <nav className="flex justify-around items-center bg-gray-900 text-white  p-5">
       <h1 className="text-2xl">E-COMMERCE APP</h1>
       <div className="w-auto  ">
         <button
           type="button"
-          className="bg-yellow-500 p-2 rounded hover:bg-red-300"
+          className="bg-yellow-500 p-2 rounded hover:bg-yellow-300"
         >
           <Link to="/basket">
             <p>Basket : {count}</p>
