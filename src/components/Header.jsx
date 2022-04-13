@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addBasket } from "../redux/EcommerceSlice/EcommerceSlice";
 import { useEffect } from "react";
-import Popup from "./Popup";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [fetchData, setFetchData] = useState([]);
   const FetchApi = async () => {
-    const responce = await fetch("https://fakestoreapi.com/products").then(
-      (res) => res.json()
-    );
+    const responce = await axios
+      .get("https://fakestoreapi.com/products")
+      .then((res) => res.data);
     console.log(responce);
     setFetchData(responce);
   };
@@ -21,26 +21,20 @@ const Header = () => {
 
   return (
     <div>
-      <div className="flex justifty-around mx-auto w-10/12 flex-wrap mt-4">
+      <div className="flex justifty-around mx-auto md:w-10/12 w-full h-full  flex-wrap mt-4">
         {fetchData.map((datas) => {
           return (
             <div
-              className="flex flex-col relative border-2 mx-auto w-80 h-auto m-2  justify-between"
+              className="flex flex-col relative border-2 mx-auto md:w-80 w-96 h-96 m-2 p-2 "
               key={datas.id}
             >
               <img
-                className="object-contain h-80   mb-1 "
+                className="object-contain w-full h-56"
                 src={datas.image}
                 alt="foto"
               />
-              <h2 className="my-2">
-                <strong>Name : </strong>
-                {datas.title}
-              </h2>
-              <h2 className="my-2">
-                <strong>Price : </strong>
-                {datas.price + " TL"}
-              </h2>
+              <h4 className="text-sm sm:text-base">{datas.title}</h4>
+              <h4 className="my-2 font-bold">{datas.price + " TL"}</h4>
               <div className="flex justify-center items-center  absolute bottom-0 right-0 left-0">
                 <button
                   className="font-bold p-2 bg-yellow-400 w-2/4  hover:text-white"

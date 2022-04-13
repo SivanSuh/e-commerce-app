@@ -1,8 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 export const EcommerceSlice = createSlice({
   name: "e-commerce",
   initialState: {
+    id: nanoid(),
     value: 0,
   },
   reducers: {
