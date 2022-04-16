@@ -1,28 +1,12 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addBasket } from "../redux/EcommerceSlice/EcommerceSlice";
-import { useEffect } from "react";
+import { addBasket, countIncrease } from "../redux/action/action";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { connect } from "react-redux";
 
-const Header = () => {
-  const dispatch = useDispatch();
-  const [fetchData, setFetchData] = useState([]);
-  const FetchApi = async () => {
-    const responce = await axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => res.data);
-    console.log(responce);
-    setFetchData(responce);
-  };
-  useEffect(() => {
-    FetchApi();
-  }, []);
-
+const Header = (props) => {
   return (
     <div>
       <div className="flex justifty-around mx-auto md:w-10/12 w-full h-full  flex-wrap mt-4">
-        {fetchData.map((datas) => {
+        {props.bookList.map((datas) => {
           return (
             <div
               className="flex flex-col relative border-2 mx-auto md:w-80 w-96 h-96 m-2 p-2 "
@@ -38,7 +22,9 @@ const Header = () => {
               <div className="flex justify-center items-center  absolute bottom-0 right-0 left-0">
                 <button
                   className="font-bold p-2 bg-yellow-400 w-2/4  hover:text-white"
-                  onClick={() => dispatch(addBasket())}
+                  onClick={() => {
+                    props.addBasket(datas);
+                  }}
                 >
                   add
                 </button>
@@ -57,4 +43,12 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    bookList: state.bookList,
+    card: state.card,
+    count: state.card,
+  };
+};
+
+export default connect(mapStateToProps, { addBasket, countIncrease })(Header);

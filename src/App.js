@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import Basket from "./components/Basket";
 import Popup from "./components/Popup";
 import Error from "./components/Error";
-
 /* This  Router page  */
 
 function App() {

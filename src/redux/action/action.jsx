@@ -1,15 +1,23 @@
-export const ADD_BUTTON = "ADD_BUTTON";
-export const DELETE_BUTTTON = "DELETE_BUTTON";
+export const ADD_BASKET = "ADD_BASKET";
+export const ADD_COUNT = "ADD_COUNT";
+export const DELETE_BASKET = "DELETE_BASKET";
 
-export const addBtn = (category) => {
+export const addBasket = (book) => {
   return {
-    type: ADD_BUTTON,
-    payload: category,
+    type: ADD_BASKET,
+    payload: book,
   };
 };
-export const deleteBtn = (category) => {
+export const countIncrease = (val) => {
   return {
-    type: DELETE_BUTTTON,
-    payload: category,
+    type: ADD_COUNT,
+    payload: val + 1,
+  };
+};
+
+export const deleteBasket = (id) => {
+  return {
+    type: DELETE_BASKET,
+    payload: id,
   };
 };

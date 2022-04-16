@@ -19,7 +19,7 @@ const Popup = () => {
     fetchDetail();
   }, []);
   return (
-    <div className="h-screen w-10/12  mx-auto">
+    <div className="h-auto w-10/12  mx-auto">
       <div className="w-full  flex justify-center  my-8 md:flex-nowrap flex-wrap  items-center">
         <div className="w-80">
           <img className="w-full" src={veri.image} alt="foto" />
@@ -40,7 +40,7 @@ const Popup = () => {
         </div>
       </div>
       <Link to="/">
-        <button className="mt-4 bg-black text-white p-2 hover:text-yellow-300">
+        <button className="mt-4 bg-black text-white p-2 hover:text-yellow-300 rounded">
           Return Home
         </button>
       </Link>
