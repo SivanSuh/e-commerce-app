@@ -1,12 +1,15 @@
 import { addBasket, countIncrease } from "../redux/action/action";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-const Header = (props) => {
+const Header = () => {
+  const dispatch = useDispatch();
+  const values = useSelector((state) => state);
+
   return (
     <div>
       <div className="flex justifty-around mx-auto md:w-10/12 w-full h-full  flex-wrap mt-4">
-        {props.bookList.map((datas) => {
+        {values.bookList.map((datas) => {
           return (
             <div
               className="flex flex-col relative border-2 mx-auto md:w-80 w-96 h-96 m-2 p-2 "
@@ -23,7 +26,8 @@ const Header = (props) => {
                 <button
                   className="font-bold p-2 bg-yellow-400 w-2/4  hover:text-white"
                   onClick={() => {
-                    props.addBasket(datas);
+                    dispatch(addBasket(datas));
+                    dispatch(countIncrease(datas));
                   }}
                 >
                   add
@@ -43,12 +47,4 @@ const Header = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    bookList: state.bookList,
-    card: state.card,
-    count: state.card,
-  };
-};
-
-export default connect(mapStateToProps, { addBasket, countIncrease })(Header);
+export default Header;
