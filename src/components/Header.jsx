@@ -1,11 +1,15 @@
-import { addBasket, countIncrease } from "../redux/action/action";
+import { addBasket } from "../redux/action/action";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const values = useSelector((state) => state);
+  const values = useSelector((state) => state.values);
+  console.log(values);
 
+  const addDispatch = (datas) => {
+    dispatch(addBasket(datas));
+  };
   return (
     <div>
       <div className="flex justifty-around mx-auto md:w-10/12 w-full h-full  flex-wrap mt-4">
@@ -25,10 +29,7 @@ const Header = () => {
               <div className="flex justify-center items-center  absolute bottom-0 right-0 left-0">
                 <button
                   className="font-bold p-2 bg-yellow-400 w-2/4  hover:text-white"
-                  onClick={() => {
-                    dispatch(addBasket(datas));
-                    dispatch(countIncrease(datas));
-                  }}
+                  onClick={() => addDispatch(datas)}
                 >
                   add
                 </button>
