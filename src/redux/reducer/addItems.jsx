@@ -1,8 +1,6 @@
 import { data } from "../../components/data";
 import { ADD_BASKET, DELETE_BASKET } from "../action/action";
 const initialState = {
-  id: 0,
-  count: 0,
   bookList: data,
   card: [],
 };

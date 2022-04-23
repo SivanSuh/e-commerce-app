@@ -13,16 +13,16 @@ const Basket = () => {
 
   return (
     <div className="h-auto w-10/12 mx-auto">
-      <h2 className="md:text-right text-center my-3 text-3xl">
+      <h2 className=" md:text-right text-center my-3 text-3xl ">
         Total : {totalPrice.toFixed(2) + " TL"}
       </h2>
       {values.card.map((book) => (
         <div
           key={book.id}
-          className="flex justify-around items-center md:flex-nowrap flex-wrap border-2 md:w-7/12 w-full mx-auto my-5 p-2"
+          className="flex p-4 justify-around items-center md:flex-nowrap flex-wrap border-2 md:w-7/12  w-full mx-auto my-5 "
         >
           <div className="md:w-2/4 w-full  ">
-            <img className="w-48 mx-auto" src={book.image} alt={book.title} />
+            <img className="w-48  mx-auto" src={book.image} alt={book.title} />
           </div>
           <div className="md:w-2/4 w-full text-center">
             <h2>{book.title}</h2>
